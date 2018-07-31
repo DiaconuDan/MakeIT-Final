@@ -1,0 +1,51 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+
+                <span class="text-danger"></span>Make IT</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a routerLink='/rank'>
+                        <i class="fa fa-list-ol" aria-hidden="true"></i> Rank Top</a>
+                </li>
+                <li>
+                    <a routerLink='/find-match'>
+                        <i class="fa fa-users" aria-hidden="true"></i> Find match</a>
+                </li>
+                <!-- <li>
+                    <a routerLink='/turbo'>
+                        <i class="fas fa-clock" aria-hidden="true"></i> Turbo</a>
+                </li> -->
+                <li>
+                    <a routerLink='/train'>
+                        <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Train</a>
+                </li>
+                <li>
+                    <a routerLink='/chat'>
+                        <i class="fa fa-comment" aria-hidden="true"></i> Chat</a>
+                </li>
+                <li>
+                    <a routerLink='/profile'>
+                        <i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                </li>
+                <li>
+                    <a routerLink='/panel'>
+                        <i class="fas fa-tachometer-alt"></i> Panel</a>
+                </li>
+                <li>
+                    <button (click)="logOut()" type="button" class="btn btn-success btn-margin-right navbar-btn">Log out</button>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

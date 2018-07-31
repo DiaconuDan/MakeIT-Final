@@ -1,0 +1,56 @@
+<!-- <div class="row">
+    <div class="col-md-4">
+        <countdown (reached)="reachedEndCounter($event)" units="Minutes | Seconds" end="June 23, 2018,15:42"></countdown>
+    </div>
+</div> -->
+
+
+<div class="row" *ngIf="questionList.length>0">
+
+    <carousel-component #topCarousel [lockSlides]="true" [angle]="70" (onReachEnd)="onReachEnd($event)">
+        <div class="item-carousel" *ngFor="let question of questionList;let i = index">
+            <div class="panel panel-default">
+                <div class="panel-heading">Question #{{i+1}}</div>
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div class="question">
+                            <strong>{{question.text}} ?</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div *ngFor="let answear of question.ans;let i = index" (click)="setClickedAnswer(answear)">
+                            <div class="col-md-6 col-lg-6 col-xs-12">
+                                <div class="card-answear" [class.selected]="answear.id == selectedAnswer">
+
+                                    <p>{{answear.text}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" id="btnSave" class="btn btn-info" (click)="goNextQuestion(question)">Next</button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="item-carousel">
+            <div class="panel panel-default">
+                <div class="panel-heading"></div>
+                <div class="panel-body">
+                   
+                    <h2>Total score {{totalScore}}</h2>
+
+                    <h2 *ngIf="currentGame">Your opponent : {{currentGame.selectedUser.points|json}}</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </carousel-component>

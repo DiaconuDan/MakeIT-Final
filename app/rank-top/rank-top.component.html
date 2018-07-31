@@ -1,0 +1,49 @@
+<navbar></navbar>
+<div class="container ">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="main-box clearfix">
+                <div class="main-box-body clearfix">
+                    <h2 class="text-center">Rank</h2>
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>User</span>
+                                    </th>
+                                    <th class="text-center">
+                                        <span>Skills</span>
+                                    </th>
+                                    <th>
+                                        <span>Points</span>
+                                    </th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of userList.reverse()" [class.success]="item.uid==currentUser.uid">
+                                    <td>
+                                        <img src="{{item.photo}}" alt="">
+                                        <a class="user-link">{{item.firstname}} {{item.lastname}}</a>
+                                        <span class="user-subhead">Member</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="label label-default">Java</span>
+                                    </td>
+                                    <td>
+                                        <a href="#">{{item.rank}}</a>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

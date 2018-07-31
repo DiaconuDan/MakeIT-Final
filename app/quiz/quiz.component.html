@@ -1,0 +1,181 @@
+<navbar></navbar>
+<div class="container">
+    <div *ngIf="gameType==''" class="row">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="box">
+                    <div class="box-content">
+                        <h1 class="tag-title">Train</h1>
+                        <hr />
+                        <p style="font-size: 1.5em;">This is the train area. You can answer as many questions as possible in order to be in great shape
+                            when you are competing online. In normal mode you can take your time for each question, whereas
+                            at turbo you have to beat the clock and answer as many correct answers as possible In this area
+                            your rank won't be affected.</p>
+                        <div class="row">
+                            <div *ngIf="selectedGameType==false">
+                                <div *ngFor="let item of categories">
+                                    <div class="col-md-4 category category-success" [class.active]="selectedCategory==item" (click)="selectCategory(item)">
+                                        <strong>{{item}}</strong>
+                                    </div>
+                                </div>
+                                <button class="btn btn-danger btn-lg pull-right" (click)="selectGameType()">
+                                    <i class="fas fa-play"></i> Play</button>
+                            </div>
+                            <div *ngIf="selectedGameType==true">
+                                <div class="col-md-6 text-center">
+                                    <div class="box type">
+                                        <div class="box-content">
+
+                                            <h1 class="tag-title">Normal</h1>
+                                            <hr />
+
+                                            <br />
+                                            <a (click)="startNomalGame()" class="btn btn-danger btn-lg">
+                                                <i class="fas fa-play"></i> Play</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <div class="box">
+                                        <div class="box-content">
+                                            <h1 class="tag-title">Turbo</h1>
+                                            <hr />
+
+                                            <br />
+                                            <a (click)="startTurboGame()" class="btn  btn-danger btn-lg">
+                                                <i class="fas fa-play"></i> Play</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div *ngIf="gameType=='normal'">
+        <div class="row" *ngIf="questionList.length>0">
+
+            <carousel-component #topCarousel [lockSlides]="true" [angle]="70" (onReachEnd)="onReachEnd($event)">
+                <div class="item-carousel" *ngFor="let question of questionList;let i = index">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Question #{{i+1}}</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="question">
+                                    <strong>{{question.text}} ?</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div *ngFor="let answear of question.ans;let i = index" (click)="setClickedAnswer(answear)">
+                                    <div class="col-md-6 col-lg-6 col-xs-12">
+                                        <div class="card-answear" [class.selected]="answear.id == selectedAnswer">
+
+                                            <p>{{answear.text}}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" id="btnSave" class="btn btn-info" (click)="goNextQuestion(question)">Next</button>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item-carousel">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <h2>Congratulations! Your total score {{totalScore}}</h2>
+
+                            <h2>Start a new game?</h2>
+                            <div class="row">
+                                <button class="btn btn-primary btn-lg">
+                                    <i class="fas fa-play"></i> Play Normal Game</button>
+                                <button class="btn btn-primary btn-lg">
+                                    <i class="fas fa-play"></i> Play Turbo Game</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </carousel-component>
+
+        </div>
+    </div>
+
+    <div *ngIf="gameType=='turbo'">
+        <div class="col-md-12 text-center">
+
+            <countdown (reached)="reachedEnd($event)" units="Minutes | Seconds" end="June 28, 2018,18:46"></countdown>
+            <carousel-component #topCarousel [lockSlides]="true" [angle]="70" (onReachEnd)="onReachEnd($event)">
+                <div class="item-carousel" *ngFor="let question of questionList;let i = index">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Question #{{i+1}}</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="question">
+                                    <strong>{{question.text}} ?</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div *ngFor="let answear of question.ans;let i = index" (click)="setClickedAnswer(answear)">
+                                    <div class="col-md-6 col-lg-6 col-xs-12">
+                                        <div class="card-answear" [class.selected]="answear.id == selectedAnswer">
+
+                                            <p>{{answear.text}}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" id="btnSave" class="btn btn-info" (click)="goNextQuestion(question)">Next</button>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="item-carousel">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <h2>Congratulations! Total score {{totalScore}}</h2>
+
+                            <h2>Start a new game?</h2>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-play"></i> Play Normal Game</button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-play"></i> Play Turbo Game</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </carousel-component>
+
+        </div>
+
+    </div>
+
+
+</div>

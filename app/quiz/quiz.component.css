@@ -1,0 +1,121 @@
+::ng-deep .countdown {
+  width: 40%;
+  height: 70px;
+  background: #e74c3c;
+  margin-bottom: 10px;
+}
+::ng-deep .two-dots {
+  display: none;
+}
+::ng-deep .measurements {
+  color: white;
+  margin-right: 5px;
+  padding: 10px;
+}
+
+::ng-deep .divider {
+  font-size: 2.3em;
+}
+
+.question {
+  padding: 25px;
+  margin-top: 20px;
+  font-size: 1.3em;
+
+  background-color: #efefef;
+  border-left: 6px solid #7f7f84;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+}
+.card-answear {
+  padding: 25px;
+  margin-top: 40px;
+  background-color: #efefef;
+
+  border-left: 6px solid #45abcd;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+.card-answear a {
+  text-decoration: none;
+}
+/*
+.card-answear:hover {
+  transform: scale(1.05);
+}  */
+::ng-deep .container {
+  width: 900px !important;
+  height: 300px !important;
+}
+.panel-body {
+  height: 470px !important;
+}
+::ng-deep .container .carousel .item-carousel {
+  border: none !important;
+}
+
+.answears {
+  padding-top: 50px;
+}
+.selected {
+  background-color: #45abcd !important;
+  color: white;
+}
+.box {
+  background: #fff;
+  transition: all 0.2s ease;
+  border: 2px dashed #dadada;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-clip: padding-box;
+  padding: 0 20px 20px 20px;
+  min-height: 190px;
+}
+
+.box:hover {
+  border: 2px solid #525c7a;
+}
+
+.box span.box-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.box .box-content {
+  padding: 16px;
+  border-radius: 0 0 2px 2px;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+.box .box-content p {
+  color: #515c66;
+  text-transform: none;
+}
+
+.category {
+  padding: 15px;
+  background-color: #fafafa;
+  border-left: 6px solid #7f7f84;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  text-transform: capitalize;
+}
+
+.category-success {
+  border-color: #80d651;
+}
+.active {
+  background-color: #80d651;
+}

@@ -1,0 +1,135 @@
+<navbar></navbar>
+<div class="content container-fluid s">
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" loadingText="Loading..." type="ball-scale-multiple">
+    </ngx-spinner>
+    <div class="row row-broken">
+        <div class="col-sm-3 col-xs-12">
+            <div class="col-inside-lg decor-default chat" style="overflow: hidden; outline: none;" tabindex="5000">
+                <div class="chat-users">
+                    <h6>Users</h6>
+                    <div *ngFor="let user of usersList">
+                        <div *ngIf="user.uid!=currentUser?.uid" class="user" (click)="openPrivateConversation(user.uid)">
+                            <div class="avatar">
+                                <img src="{{user?.photo}}" alt="User name">
+                                <div *ngIf="user?.connected == true" class="status online"></div>
+                                <div *ngIf="user?.connected == false" class="status off"></div>
+                            </div>
+                            <div class="name">{{user?.firstname}}</div>
+                            <div class="mood">
+                                {{user?.connected == true ? 'online' : 'offline'}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div *ngIf="privateCon==false" class="col-sm-9 col-xs-12 chat" style="overflow: hidden; outline: none;" tabindex="5001">
+            <div class="col-inside-lg decor-default">
+                <!-- <ng-scrollbar thumbClass="custom-scrollbars"> -->
+                <div class="chat-body">
+                    <h6>Global Chat</h6>
+
+                    <div *ngFor="let item of messagesList">
+
+                        <div *ngIf="item.userId == currentUser?.uid;else other">
+
+                            <div class="answer right">
+                                <div class="avatar">
+                                    <img *ngIf="currentUser?.uid=='U6vOnQApdRgw8F2nrbtN1u4qwx73'" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                                    <img *ngIf="currentUser?.uid=='KZqQ0OmZBicfG6gfMviXSPholAB2'" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
+                                    <div class="status online"></div>
+                                </div>
+
+                                <div class="name" *ngIf="currentUser?.uid=='U6vOnQApdRgw8F2nrbtN1u4qwx73'">Dan Diaconu</div>
+                                <div class="name" *ngIf="currentUser?.uid=='KZqQ0OmZBicfG6gfMviXSPholAB2'">Alexandru Mihai</div>
+                                <div class="text">
+                                    {{item.text}}
+                                </div>
+                                <div class="time">5 min ago</div>
+                            </div>
+                        </div>
+                        <ng-template #other>
+                            <div class="answer left">
+                                <div class="avatar">
+                                    <img *ngIf="currentUser?.uid!='U6vOnQApdRgw8F2nrbtN1u4qwx73'" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                                    <img *ngIf="currentUser?.uid!='KZqQ0OmZBicfG6gfMviXSPholAB2'" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
+                                    <div class="status online"></div>
+                                </div>
+
+                                <div class="name" *ngIf="currentUser?.uid!='U6vOnQApdRgw8F2nrbtN1u4qwx73'">Dan Diaconu</div>
+                                <div class="name" *ngIf="currentUser?.uid!='KZqQ0OmZBicfG6gfMviXSPholAB2'">Alexandru Mihai</div>
+                                <div class="text">
+                                    {{item.text}}
+                                </div>
+                                <div class="time">2 min ago</div>
+                            </div>
+                        </ng-template>
+
+
+
+
+                    </div>
+                    <div class="answer-add">
+                        <input [(ngModel)]="messageText" placeholder="Write a message" (keyup.enter)="sendMessage()">
+
+                        <span class="answer-btn answer-btn-2" (click)="sendMessage()"></span>
+                    </div>
+                </div>
+                <!-- </ng-scrollbar> -->
+
+            </div>
+        </div>
+        <div *ngIf="privateCon==true" class="col-sm-9 col-xs-12 chat" style="overflow: hidden; outline: none;" tabindex="5001">
+            <div class="col-inside-lg decor-default">
+                <div class="chat-body">
+                    <h6>Private Chat
+                        <button class="btn btn-default" (click)="goToGlobalChat()">
+                            <i class="fas fa-undo-alt"></i>
+                        </button>
+                    </h6>
+
+                    <div *ngFor="let item of privateMessagesList">
+
+                        <div *ngIf="item.userId == currentUser?.uid;else other">
+                            <div class="answer right">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name">
+                                    <div class="status npm install ngx-scrollbar@1.5.7"></div>
+                                </div>
+                                <div class="name">Dan Diaconu </div>
+                                <div class="text">
+                                    {{item.text}}
+                                </div>
+                                <div class="time">1 min ago</div>
+                            </div>
+                        </div>
+                        <ng-template #other>
+                            <div class="answer left">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User name">
+                                    <div class="status online"></div>
+                                </div>
+                                <div class="name">Alexander Herthic </div>
+                                <div class="text">
+                                    {{item.text}}
+                                </div>
+                                <div class="time">2 min ago</div>
+                            </div>
+                        </ng-template>
+
+
+
+
+                    </div>
+                    <div class="answer-add">
+                        <input [(ngModel)]="messageText" placeholder="Write a message" (keyup.enter)="sendMessage()">
+
+                        <span class="answer-btn answer-btn-2" (click)="sendMessage()"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
